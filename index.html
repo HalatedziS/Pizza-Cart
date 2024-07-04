@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" x-data="pizzaCart()">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfect Pizza - Online Ordering</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <h1>Perfect Pizza</h1>
+    <h3>pizza orders</h3> <!-- Added a subtitle for clarity -->
+  </header>
+
+  <section class="shopping-cart">
+    <h2>Shopping Cart</h2>
+    <!-- Cart items -->
+    <div class="cart-item" x-show="cart.small.quantity > 0">
+      <span>Small Pizza</span>
+      <div class="cart-controls">
+        <button @click="decrement('small')">-</button>
+        <span x-text="cart.small.quantity"></span>
+        <span><span x-text="cart.small.quantity * 49.00"></span></span>
+        <button @click="increment('small')">+</button>R49.00
+      </div>
+    </div>
+    <div class="cart-item" x-show="cart.medium.quantity > 0">
+      <span>Medium Pizza</span>
+      <div class="cart-controls">
+        <button @click="decrement('medium')">-</button>
+        <span x-text="cart.medium.quantity"></span>
+        <span><span x-text="cart.medium.quantity * 89.00"></span></span>
+        <button @click="increment('medium')">+</button>R89.00
+      </div>
+    </div>
+    <div class="cart-item" x-show="cart.large.quantity > 0">
+      <span>Large Pizza</span>
+      <div class="cart-controls">
+        <button @click="decrement('large')">-</button>
+        <span x-text="cart.large.quantity"></span>
+        <span><span x-text="cart.large.quantity * 129.00"></span></span>
+        <button @click="increment('large')">+</button>R129.00
+      </div>
+    </div>
+    <!-- Total cost and checkout button -->
+    <div class="cart-total" x-show="totalCost > 0">
+      <p>Total: R<span x-text="totalCost"></span></p>
+      <button @click="checkout">Check Out</button>
+    </div>
+    <p x-show="checkoutMessage" x-text="checkoutMessage" class="checkout-message"></p>
+  </section>
+
+  <div class="checkout" x-show="isCheckingOut">
+    <h2>Checkout</h2>
+    <p>Total: R<span x-text="totalCost"></span></p>
+    <input type="number" x-model="paymentAmount" placeholder="Enter payment amount">
+    <button @click="processPayment">Pay</button>
+    <p x-text="message"></p>
+  </div>
+
+  <main class="pizzas">
+    <!-- Pizza options -->
+    <section class="pizza small-pizza">
+      <h2>Small Pizza</h2>
+      <img src="Pizza 1.png" width="110px" alt="Small Pizza">
+      <h3>R49.00</h3>
+      <p>Experience big flavors in small packages...</p>
+      <button @click="addToCart('small')">Order</button>
+    </section>
+
+    <section class="pizza medium-pizza">
+      <h2>Medium Pizza</h2>
+      <img src="Pizza 3.png" width="110px" alt="Medium Pizza">
+      <h3>R89.00</h3>
+      <p>Delight in the perfect balance of flavors...</p>
+      <button @click="addToCart('medium')">Order</button>
+    </section>
+
+    <section class="pizza large-pizza">
+      <h2>Large Pizza</h2>
+      <img src="Pizza 3.png" width="110px" alt="Large Pizza">
+      <h3>R129.00</h3>
+      <p>Indulge in a flavor explosion...</p>
+      <button @click="addToCart('large')">Order</button>
+    </section>
+  </main>
+
+  <section class="contact-details">
+    <h2>Contact Details</h2>
+    <p>Contact us at: 0769330044 or Email: info@perfectpizza.co.za</p>
+  </section>
+
+  
+
+  <script src="app.js"></script>
+</body>
+</html>
