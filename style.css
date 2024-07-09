@@ -71,6 +71,14 @@ body {
     align-items: center;
 }
 
+.cart-controls .quantity {
+    margin: 0 10px;
+}
+
+.cart-controls .price {
+    margin: 0 10px;
+}
+
 .cart-controls button {
     margin: 0 5px;
 }
@@ -102,3 +110,18 @@ body {
     color: green;
 }
 
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    display: none;
+}
+
+.notification[style*="display: block"] {
+    display: block;
+}

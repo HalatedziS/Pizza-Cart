@@ -9,6 +9,7 @@ function pizzaCart() {
         totalCost: 0,
         message: '',
         isCheckingOut: false,
+        notificationMessage: '',
 
         addToCart(size) {
             this.cart[size].quantity++;
@@ -38,6 +39,7 @@ function pizzaCart() {
         processPayment() {
             if (this.paymentAmount >= this.totalCost) {
                 this.message = "Enjoy your pizzas!";
+                this.notificationMessage = "Payment successful! Enjoy your pizzas!";
                 this.cart = {
                     small: { quantity: 0, price: 49.00 },
                     medium: { quantity: 0, price: 89.00 },
@@ -46,9 +48,11 @@ function pizzaCart() {
                 this.updateTotalCost();
             } else {
                 this.message = "Sorry - that is not enough money!";
+                this.notificationMessage = "Payment failed! Not enough money!";
             }
-            setTimeout(() => this.message = '', 3000);
-            this.isCheckingOut = false;
+            setTimeout(() => {
+                this.notificationMessage = '';
+            }, 3000);
         }
     }
 }
